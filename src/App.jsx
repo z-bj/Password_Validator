@@ -5,6 +5,13 @@ import closedEye from "./closed-eye.svg";
 
 function App() {
   const [passwordIsVisible, setPasswordIsVisible] = useState(false);
+  const [password, setPassword] = useState("");
+  const passwordHasLowercaseLetter = /[a-z]/.test(password);
+  const passwordHasUppercaseLetter = /[A-Z]/.test(password);
+  const passwordHasSpecialCharacter =
+    /[!@#$%^&*()\\[\]{}\-_+=~`|:;"'<>,./?]/.test(password);
+  const passwordHasNumber = /[0-9]/.test(password);
+  const passwordHasValidLength = password.length >= 8;
 
   return (
     <>
@@ -13,6 +20,7 @@ function App() {
       <input
         type={passwordIsVisible ? "text" : "password"}
         placeholder="Enter your password"
+        onChange={(e) => setPassword(e.currentTarget.value)}
       />
       <span onClick={() => setPasswordIsVisible((prevState) => !prevState)}>
         <img
@@ -22,11 +30,21 @@ function App() {
         />
       </span>
       <ul>
-        <li>One lowercase letter</li>
-        <li>One uppercase letter</li>
-        <li>One special letter</li>
-        <li>one number</li>
-        <li>Minimum 8 characters</li>
+        <li style={{ color: passwordHasLowercaseLetter ? "green" : "red" }}>
+          One lowercase letter
+        </li>
+        <li style={{ color: passwordHasUppercaseLetter ? "green" : "red" }}>
+          One uppercase letter
+        </li>
+        <li style={{ color: passwordHasSpecialCharacter ? "green" : "red" }}>
+          One special letter
+        </li>
+        <li style={{ color: passwordHasNumber ? "green" : "red" }}>
+          one number
+        </li>
+        <li style={{ color: passwordHasValidLength ? "green" : "red" }}>
+          Minimum 8 characters
+        </li>
       </ul>
     </>
   );
