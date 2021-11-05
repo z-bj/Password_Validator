@@ -6,4 +6,4 @@ export default defineConfig({
   plugins: [react()]
 })
 
-base = '/Password_Validator/'
+base : '/Password_Validator/'
