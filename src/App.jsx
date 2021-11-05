@@ -1,17 +1,13 @@
 import React, { useState } from "react";
+import PasswordValidator from "./utils/PassWordValidator";
 import "./App.scss";
 import openEye from "./open-eye.svg";
 import closedEye from "./closed-eye.svg";
 
 function App() {
-  const [passwordIsVisible, setPasswordIsVisible] = useState(false);
   const [password, setPassword] = useState("");
-  const passwordHasLowercaseLetter = /[a-z]/.test(password);
-  const passwordHasUppercaseLetter = /[A-Z]/.test(password);
-  const passwordHasSpecialCharacter =
-    /[!@#$%^&*()\\[\]{}\-_+=~`|:;"'<>,./?]/.test(password);
-  const passwordHasNumber = /[0-9]/.test(password);
-  const passwordHasValidLength = password.length >= 8;
+  const [passwordIsVisible, setPasswordIsVisible] = useState(false);
+  const passwordValidator = new PasswordValidator(password);
 
   return (
     <>
@@ -30,19 +26,35 @@ function App() {
         />
       </span>
       <ul>
-        <li style={{ color: passwordHasLowercaseLetter ? "green" : "red" }}>
+        <li
+          style={{
+            color: passwordValidator.hasLowerCaseLetter() ? "green" : "red",
+          }}
+        >
           One lowercase letter
         </li>
-        <li style={{ color: passwordHasUppercaseLetter ? "green" : "red" }}>
+        <li
+          style={{
+            color: passwordValidator.hasUpperCaseLetter() ? "green" : "red",
+          }}
+        >
           One uppercase letter
         </li>
-        <li style={{ color: passwordHasSpecialCharacter ? "green" : "red" }}>
+        <li
+          style={{
+            color: passwordValidator.hasSpecialCharacter() ? "green" : "red",
+          }}
+        >
           One special letter
         </li>
-        <li style={{ color: passwordHasNumber ? "green" : "red" }}>
+        <li style={{ color: passwordValidator.hasDigit() ? "green" : "red" }}>
           one number
         </li>
-        <li style={{ color: passwordHasValidLength ? "green" : "red" }}>
+        <li
+          style={{
+            color: passwordValidator.hasValidLength() ? "green" : "red",
+          }}
+        >
           Minimum 8 characters
         </li>
       </ul>
