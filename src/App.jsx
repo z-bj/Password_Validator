@@ -3,6 +3,7 @@ import PasswordValidator from "./utils/PassWordValidator";
 import "./App.scss";
 import openEye from "./open-eye.svg";
 import closedEye from "./closed-eye.svg";
+import PasswordValidatorStatusViewer from "./utils/PasswordValidatorStatusViewer";
 
 function App() {
   const [password, setPassword] = useState("");
@@ -25,39 +26,7 @@ function App() {
           width="32"
         />
       </span>
-      <ul>
-        <li
-          style={{
-            color: passwordValidator.hasLowerCaseLetter() ? "green" : "red",
-          }}
-        >
-          One lowercase letter
-        </li>
-        <li
-          style={{
-            color: passwordValidator.hasUpperCaseLetter() ? "green" : "red",
-          }}
-        >
-          One uppercase letter
-        </li>
-        <li
-          style={{
-            color: passwordValidator.hasSpecialCharacter() ? "green" : "red",
-          }}
-        >
-          One special letter
-        </li>
-        <li style={{ color: passwordValidator.hasDigit() ? "green" : "red" }}>
-          one number
-        </li>
-        <li
-          style={{
-            color: passwordValidator.hasValidLength() ? "green" : "red",
-          }}
-        >
-          Minimum 8 characters
-        </li>
-      </ul>
+      <PasswordValidatorStatusViewer validator={passwordValidator}/>
     </>
   );
 }
