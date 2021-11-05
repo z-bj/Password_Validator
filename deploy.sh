@@ -23,3 +23,4 @@ git commit -m 'deploy'
 git push -f git@github.com:bjzarchi.github.io/Password_Validator.git master:gh-pages
 
 cd -
+-
