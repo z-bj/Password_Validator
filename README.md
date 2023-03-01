@@ -2,7 +2,7 @@
 
 ![banner](https://github.com/z-bj/Password_Validator/blob/master/regex-based-credential-validator.jpg)
 
-This repository contains a JavaScript class called `PasswordValidator` that provides a dynamic way to check if a password meets a set of constraints. The class exports its default module and takes a password string as a parameter in its constructor method and assigns it to the `this.password` property of the class instance.
+The Core of the app is a JavaScript class called `PasswordValidator` that provides a dynamic way to check if a password meets a set of constraints. The class exports its default module and takes a password string as a parameter in its constructor method and assigns it to the `this.password` property of the class instance.
 
 The `PasswordValidator` class has five methods:
 
