@@ -15,3 +15,34 @@ The `PasswordValidator` class has five methods:
 Each method uses a regular expression pattern to search for the presence of a specific type of character in the password string. If the character is found, the method returns true. Otherwise, it returns false.
 
 This `PasswordValidator` class can be used to validate the strength of a password by checking if it meets specific criteria. It can be used in web applications to ensure that user passwords meet a certain level of complexity before they can be accepted. This repository can be cloned or downloaded to be used as a library in any JavaScript project.
+
+``` javascript
+
+export default class PasswordValidator {
+  constructor(password) {
+    this.password = password;
+  }
+
+  hasLowerCaseLetter() {
+    return /[a-z]/.test(this.password);
+  }
+
+  hasUpperCaseLetter() {
+    return /[A-Z]/.test(this.password);
+  }
+
+  hasSpecialCharacter() {
+    return /[!@#$%^&*()\\[\]{}\-_+=~`|:;"'<>,./?]/.test(this.password);
+  }
+
+  hasDigit() {
+    return /\d/.test(this.password);
+  }
+
+  hasValidLength() {
+    return this.password.length >= 8;
+  }
+}
+
+
+```
